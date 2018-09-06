@@ -1,5 +1,5 @@
 # Description:
-#   Exercise3 utils.py.
+#   Exercise6 utils.py.
 #
 # Copyright (C) 2018 Santiago Cortes, Juha Ylioinas
 #
