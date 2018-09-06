@@ -1,7 +1,5 @@
-# Utility function definitions
-#
 # Description:
-#   Define utility functions..
+#   Exercise3 utils.py.
 #
 # Copyright (C) 2018 Santiago Cortes, Juha Ylioinas
 #
