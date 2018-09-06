@@ -1,4 +1,15 @@
+# Description:
+#   Exercise3 utils.py.
+#
+# Copyright (C) 2018 Santiago Cortes, Juha Ylioinas
+#
+# This software is distributed under the GNU General Public 
+# Licence (version 2 or later); please refer to the file 
+# Licence.txt, included with the software, for details.
+
 import numpy as np
+from types import *
+from scipy.ndimage.interpolation import map_coordinates
 
 # convert from rgb to grayscale image
 def rgb2gray(rgb):
@@ -9,13 +20,16 @@ def rgb2gray(rgb):
     return gray
 
 # salt-and-pepper noise generator
-def add_sp_noise(img, prob):
-    sp_img = np.copy(img)
-    h, w = sp_img.shape
-    prob_sp = np.random.rand(h, w)
-    sp_img[prob_sp < prob] = 0
-    sp_img[prob_sp > 1 - prob] = 1
-    return sp_img
+def imnoise(img, mode, prob):
+    imgn = img.copy()
+    if mode == 'salt & pepper':
+	assert (prob >= 0 and prob <= 1), "prob must be a scalar between 0 and 1"
+    	h, w = imgn.shape
+    	prob_sp = np.random.rand(h, w)
+    	imgn[prob_sp < prob] = 0
+    	imgn[prob_sp > 1 - prob] = 1
+
+    return imgn
 
 # Gaussian noise generator
 def add_gaussian_noise(img, noise_sigma):
@@ -111,3 +125,92 @@ def circle_points(cx, cy, rad):
     y = cy + np.sin(theta) * rad
 
     return x, y
+
+def matchFeatures(desc1, desc2):
+    xTy = np.inner(desc1, desc2)
+    
+    xTx = np.expand_dims(np.diag(np.inner(desc1, desc1)), axis=1)
+    xTx = np.tile(xTx, (1, desc2.shape[0]))
+
+    yTy = np.expand_dims(np.diag(np.inner(desc2, desc2)), axis=0)
+    yTy = np.tile(yTy,(desc1.shape[0], 1))
+    
+    # Vectorized implementation of an Euclidean distance computation
+    # between two vector sets desc1 and desc2
+    distmat = xTx + yTy - 2*xTy
+    
+    # Matching pairs
+    ids1 = np.argmin(distmat, axis=1)
+    ids2 = np.argmin(distmat, axis=0)
+
+    pairs = []
+    for k in range(desc1.shape[0]):
+        if k == ids2[ids1[k]]:
+            pairs.append(np.array([k, ids1[k]]))
+    pairs = np.array(pairs)
+    
+    distmat_sorted = np.sort(distmat, axis=1)
+
+    # Lowe's ratio test to filter out bad matches
+    good_pairs = []
+    for i in range(pairs.shape[0]):
+        k = int(pairs[i,0])
+        nearestd_1 = distmat_sorted[k,0]
+        nearestd_2 = distmat_sorted[k,1]
+        if nearestd_1 < 0.75*nearestd_2:
+            good_pairs.append(pairs[i,:])
+    
+    good_pairs = np.array(good_pairs)
+    
+    return good_pairs
+
+def imwarp(srcI, tform, xlims, ylims):
+    xMin=np.amin(xlims[:,0])
+    xMax=np.amax(xlims[:,1])
+    yMin=np.amin(ylims[:,0])
+    yMax=np.amax(ylims[:,1])
+
+    # Width and height of panorama.
+    width  = int(np.floor(xMax - xMin))
+    height = int(np.floor(yMax - yMin))
+    
+    stepx = (xMax-xMin)/(width-1)
+    stepy = (yMax-yMin)/(height-1)
+
+    xv, yv = np.meshgrid(np.arange(xMin, xMax+stepx, stepx), 
+                     np.arange(yMin, yMax+stepy, stepy))
+    
+    pts_proj_homog = np.dot(np.linalg.inv(tform), 
+               np.vstack((xv.flatten(), yv.flatten(), np.ones((1, xv.size)))))
+    pts_proj = pts_proj_homog[:2,:] / pts_proj_homog[2,:]
+    
+    xvt = pts_proj[0,:].reshape(xv.shape[0], xv.shape[1])
+    yvt = pts_proj[1,:].reshape(yv.shape[0], yv.shape[1])
+
+    warpedI = None
+    
+    if len(srcI.shape) == 3:
+        for ch in range(3):
+            warpedI_ = map_coordinates(srcI[:,:,ch], (yvt, xvt))
+	    if warpedI is not None:
+                warpedI[:,:,ch] = warpedI_
+            else:
+                warpedI = np.zeros((warpedI_.shape[0], warpedI_.shape[1],3))
+		warpedI[:,:,ch] = warpedI_
+        for ch in range(3):
+            warpedI[:,:,ch] = warpedI[:,:,ch] / np.amax(warpedI[:,:,ch]) 
+    else:
+        warpedI = map_coordinates(srcI, (yvt, xvt))
+
+   
+
+    return warpedI
+
+def blend(img0, mask0, img1):
+    output = np.zeros(img0.shape)
+    if len(img0.shape) == 3:
+        for ch in range(3):
+            output[:,:,ch] = (img1[:,:,ch] * (1 - mask0)) + img0[:,:,ch]
+    else:
+        output = (img1 * (1 - mask0)) + img0
+    return output
