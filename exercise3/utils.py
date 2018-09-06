@@ -1,3 +1,14 @@
+# Utility function definitions
+#
+# Description:
+#   Define utility functions..
+#
+# Copyright (C) 2018 Santiago Cortes, Juha Ylioinas
+#
+# This software is distributed under the GNU General Public 
+# Licence (version 2 or later); please refer to the file 
+# Licence.txt, included with the software, for details.
+
 import numpy as np
 from types import *
 from scipy.ndimage.interpolation import map_coordinates
