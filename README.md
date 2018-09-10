@@ -11,7 +11,7 @@ git clone https://github.com/AaltoVision/CV_course_py.git<br/>
 
 <b>Load/install anaconda2/3:</b><br/>
 Aalto Linux workstations: module load anaconda2/3<br/>
-Your home workstation: install miniconda https://conda.io/miniconda.html<br/>
+Your home workstation: install e.g. miniconda https://conda.io/miniconda.html<br/>
 
 <b>Create a virtual environment for the course programming assignments:</b><br/>
 conda create -n CV_course python=2.7/3.2 numpy scipy scikit-image scikit-learn jupyter<br/>
