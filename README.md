@@ -26,4 +26,4 @@ All notebooks and assignments should be Python 2/3 compatible.
 
 
 
-For more information, or bug reporting, feel free to contact at juha.yioinas@aalto.fi / santiago.cortes@aalto.fi.
+For more information, or bug reporting, feel free to contact at juha.ylioinas@aalto.fi / santiago.cortes@aalto.fi.
