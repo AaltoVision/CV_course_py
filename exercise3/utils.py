@@ -192,11 +192,11 @@ def imwarp(srcI, tform, xlims, ylims):
     if len(srcI.shape) == 3:
         for ch in range(3):
             warpedI_ = map_coordinates(srcI[:,:,ch], (yvt, xvt))
-	    if warpedI is not None:
+            if warpedI is not None:
                 warpedI[:,:,ch] = warpedI_
             else:
                 warpedI = np.zeros((warpedI_.shape[0], warpedI_.shape[1],3))
-		warpedI[:,:,ch] = warpedI_
+                warpedI[:,:,ch] = warpedI_
         for ch in range(3):
             warpedI[:,:,ch] = warpedI[:,:,ch] / np.amax(warpedI[:,:,ch]) 
     else:
