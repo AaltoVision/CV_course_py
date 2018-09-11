@@ -14,7 +14,7 @@ Aalto Linux workstations: module load anaconda2/3<br/>
 Your home workstation: install e.g. miniconda https://conda.io/miniconda.html<br/>
 
 <b>Create a virtual environment for the course programming assignments:</b><br/>
-conda create -n CV_course python=2/3 numpy scipy scikit-image scikit-learn jupyter<br/>
+conda create -n CV_course python=2/3 numpy scipy matplotlib scikit-image scikit-learn jupyter<br/>
 source activate CV_course<br/>
 
 pip install opencv-python<br/>
