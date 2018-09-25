@@ -23,11 +23,11 @@ def rgb2gray(rgb):
 def imnoise(img, mode, prob):
     imgn = img.copy()
     if mode == 'salt & pepper':
-	assert (prob >= 0 and prob <= 1), "prob must be a scalar between 0 and 1"
-    	h, w = imgn.shape
-    	prob_sp = np.random.rand(h, w)
-    	imgn[prob_sp < prob] = 0
-    	imgn[prob_sp > 1 - prob] = 1
+        assert (prob >= 0 and prob <= 1), "prob must be a scalar between 0 and 1"
+        h, w = imgn.shape
+        prob_sp = np.random.rand(h, w)
+        imgn[prob_sp < prob] = 0
+        imgn[prob_sp > 1 - prob] = 1
 
     return imgn
 
