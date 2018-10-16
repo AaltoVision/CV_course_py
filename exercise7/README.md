@@ -6,7 +6,7 @@ Check out the notebook ExerciseRound7.ipynb for the programming task.
 
 imdb.npy https://drive.google.com/open?id=1P8TjRIdwYtJHpm3l88v-8Gm1DbZSj-5P <br>(checksum 1132d7d850fba611436eb74b43fd715b) <br> 
 sift_disc_vocab.npy https://drive.google.com/open?id=1pMOcLj5AT4DiSzzUfejoTOZr5b1kp7aZ <br> (checksum e6264c5b7c59d735ce92947add7cd636)<br>
-download to folder './data_part3/' <br>
+download and put to the folder './data_part3/' <br>
 
 Download the images used in the practical:
 
