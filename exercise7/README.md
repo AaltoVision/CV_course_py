@@ -17,4 +17,4 @@ mkdir data <br>
 cd data <br>
 wget http://www.robots.ox.ac.uk/~vgg/share/practical-instance-recognition-2018a-data-only.tar.gz <br>
 tar -zxvf practical-instance-recognition-2018a-data-only.tar.gz <br>
-mv practical-instance-recognition-2018a/data/ .
+mv practical-instance-recognition-2018a/data/* .
