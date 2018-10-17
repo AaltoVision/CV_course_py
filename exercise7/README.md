@@ -13,7 +13,6 @@ sift_disc_vocab.npy https://drive.google.com/open?id=1pMOcLj5AT4DiSzzUfejoTOZr5b
 Download the images used in the practical:
 
 cd [your exerciseRound7 folder] <br>
-mkdir data <br>
 cd data <br>
 wget http://www.robots.ox.ac.uk/~vgg/share/practical-instance-recognition-2018a-data-only.tar.gz <br>
 tar -zxvf practical-instance-recognition-2018a-data-only.tar.gz <br>
