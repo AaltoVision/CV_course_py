@@ -1,8 +1,11 @@
 ## Exercise Round 7
 
-Check out the notebook ExerciseRound7.ipynb for the programming task.
+For this exercise round, collect all your answers to a single report (ExerciseRound7.ipynb or a pdf conversion of that) and submit it in the mycourse page.<br>
+First part of the tasks (Ex1-2) can be found in the ExerciseRound7.ipynb. For Ex3 (VGG practical) you need to look at part[1-3].ipynbs.
 
-<b>For Ex. 3 you need to download some additional data:</b>
+
+
+<b>For Ex3 (VGG practical) you need to download some additional data:</b>
 
 Download the given two files and put to the folder './data_part3/' <br>
 
