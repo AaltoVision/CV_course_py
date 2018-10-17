@@ -5,7 +5,7 @@ First part of the tasks (Ex1-2) can be found in the ExerciseRound7.ipynb. For Ex
 
 
 
-<b>For Ex. 3 you need to download some additional data:</b>
+<b>For Ex3 (VGG practical) you need to download some additional data:</b>
 
 Download the given two files and put to the folder './data_part3/' <br>
 
