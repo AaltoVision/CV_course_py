@@ -6,7 +6,7 @@ First part of the tasks (Ex1-2) can be found in the ExerciseRound7.ipynb. For Ex
 
 
 
-<b>For Ex3 (VGG practical) you need to install and download some additional packages and data:</b><br>
+<b>For Ex3 (VGG practical) you need to install some packages and download some additional data:</b><br>
 
 Additional libraries: <br>
 Install the following two packages using your existing conda environment (like it was instructed here <a href='https://github.com/AaltoVision/CV_course_py/blob/master/README.md'>here</a>)<br>
