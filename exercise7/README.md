@@ -6,8 +6,17 @@ First part of the tasks (Ex1-2) can be found in the ExerciseRound7.ipynb. For Ex
 
 
 
-<b>For Ex3 (VGG practical) you need to download some additional data:</b>
+<b>For Ex3 (VGG practical) you need to install and download some additional packages and data:</b><br>
 
+Additional libraries: <br>
+Install the following two packages using your existing conda environment (like it was instructed here <a href='https://github.com/AaltoVision/CV_course_py/blob/master/README.md'>here</a>)<br>
+
+conda install -c conda-forge pyflann (for Approximate Nearest Neighbor matching)<br>
+conda install line_profiler (to profile descriptor matching)
+
+NOTE: Be sure to have your env activated before installing.<br>
+
+Additional data: <br>
 Download the given two files and put to the folder './data_part3/' <br>
 
 imdb.npy https://drive.google.com/open?id=1P8TjRIdwYtJHpm3l88v-8Gm1DbZSj-5P <br>(checksum 1132d7d850fba611436eb74b43fd715b) <br> 
