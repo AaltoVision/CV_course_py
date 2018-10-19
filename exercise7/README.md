@@ -11,10 +11,9 @@ First part of the tasks (Ex1-2) can be found in the ExerciseRound7.ipynb. For Ex
 Additional libraries: <br>
 Install the following two packages using your existing conda environment (like it was instructed here <a href='https://github.com/AaltoVision/CV_course_py/blob/master/README.md'>here</a>)<br>
 
+NOTE: Be sure to have your env activated before installing.<br>
 conda install -c conda-forge pyflann (for Approximate Nearest Neighbor matching)<br>
 conda install line_profiler (to profile descriptor matching)
-
-NOTE: Be sure to have your env activated before installing.<br>
 
 Additional data: <br>
 Download the given two files and put to the folder './data_part3/' <br>
