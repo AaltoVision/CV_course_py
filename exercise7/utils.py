@@ -209,6 +209,11 @@ def getHistogramFromDescriptor(vocab, idf, descrs):
     return ha
 
 def getImage(imPath, imName, ii):
+    import sys  
+    if sys.version_info[0] > 2:
+        imPath = imPath.decode('utf-8')
+        imName = imName.decode('utf-8')
+    #imPath = "{}/{}".format(imPath, imName)
     imPath = imPath + '/' + imName
     im = imread(imPath)
     return im
