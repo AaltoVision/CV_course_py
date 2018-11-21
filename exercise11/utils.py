@@ -9,7 +9,8 @@ def kpsObjToArray(kp):
 
 def findNeighbours(descrs1, descrs2, numNeighbors=1):
     flann = FLANN()
-    ind, dist = flann.nn(descrs2, descrs1, numNeighbors, algorithm="kdtree",
+    # "linear" : brute-force search
+    ind, dist = flann.nn(descrs2, descrs1, numNeighbors, algorithm="linear",
         trees=8, checks=100)
     return ind, dist
 
